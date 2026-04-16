@@ -18,11 +18,6 @@ const NovaAnalise = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4">
-      {/* Título Centralizado */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-        Configurar Nova Análise
-      </h2>
-
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
           

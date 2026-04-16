@@ -64,9 +64,6 @@ const Relatorios = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4">
-      <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-        Relatórios de Auditoria e Governança
-      </h2>
 
       {/* BARRA DE FILTROS */}
       <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-8">

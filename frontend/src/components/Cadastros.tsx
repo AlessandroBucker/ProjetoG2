@@ -26,11 +26,6 @@ const Cadastros = () => { // Nome alterado para combinar com o arquivo
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-      {/* Título centralizado e com margem segura da sidebar */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center w-full">
-        Clientes Cadastrados
-      </h2>
-
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="overflow-x-auto"> {/* Garante que a tabela não quebre em telas menores */}
           <table className="w-full text-left border-collapse">

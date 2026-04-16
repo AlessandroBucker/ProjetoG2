@@ -57,7 +57,7 @@ const Pendencias = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800 flex items-center">
-            Central de Pendências
+            Pendências
             <span className="ml-3 bg-red-500 text-white text-sm px-2.5 py-0.5 rounded-full">
               {pendencias.length}
             </span>

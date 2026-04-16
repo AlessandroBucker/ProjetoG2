@@ -1,14 +1,27 @@
 import { useState } from "react"; 
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { 
   LayoutDashboard, FileText, Users, Settings, 
-  LogOut, Search, Bell, ShieldCheck,
-  BarChart3, PlusCircle, FileWarning // <-- Adicione estes dois aqui
+  LogOut, Bell, ShieldCheck,
+  BarChart3, PlusCircle, FileWarning 
 } from "lucide-react";
 
 const Layout = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getTituloPagina = () => {
+    switch (location.pathname.toLowerCase()) {
+      case '/visao-geral': return 'Visão Geral';
+      case '/cadastros': return 'Cadastrados';
+      case '/nova-analise': return 'Configurar Nova Análise';
+      case '/pendencias': return 'Central de Pendências';
+      case '/relatorios': return 'Relatórios';
+      case '/configuracoes': return 'Configurações';
+      default: return 'Visão Geral';
+    }
+  };
 
   const notifications = [
     { id: 1, text: "Novo lead capturado: João Silva", time: "5 min atrás" },
@@ -28,50 +41,50 @@ const Layout = () => {
           </span>
         </div>
         
+        {/* SEQUÊNCIA DE BOTÕES PADRONIZADA */}
         <nav className="flex-1 p-4 space-y-2 overflow-hidden">
-            <button onClick={() => navigate('/VisaoGeral')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <LayoutDashboard size={24} className="min-w-[24px]" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Visão Geral</span>
+            <button onClick={() => navigate('/visaogeral')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+              <LayoutDashboard size={24} className="min-w-[24px]" />
+              <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Visão Geral</span>
             </button>
-            <button onClick={() => navigate('/Cadastros')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <Users size={24} className="min-w-[24px]" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium text-white">Cadastros</span>
+            
+            <button onClick={() => navigate('/cadastros')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+              <Users size={24} className="min-w-[24px]" />
+              <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Cadastros</span>
             </button>
-            <button onClick={() => navigate('/nova-analise')}className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <PlusCircle size={24} className="min-w-[24px] text-slate-400 group-hover:text-green-400" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium text-white">
-                Nova Análise
-            </span>
+            
+            <button onClick={() => navigate('/nova-analise')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+              <PlusCircle size={24} className="min-w-[24px]" />
+              <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Nova Análise</span>
             </button>
-            <button 
-            onClick={() => navigate('/pendencias')} 
-            className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap group relative"
-            >
-            <div className="relative min-w-[24px]">
-                <FileWarning size={24} className="text-slate-400 group-hover:text-orange-400 transition-colors" />
-                {/* Bolinha vermelha de notificação no ícone */}
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-slate-900"></span>
-            </div>
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium text-white flex items-center justify-between flex-1">
-                Pendências
-                <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full ml-2">3</span>
-            </span>
+            
+            <button onClick={() => navigate('/pendencias')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap group relative">
+              <div className="relative min-w-[24px]">
+                  <FileWarning size={24} className="min-w-[24px]" />
+                  {/* O alerta vermelho permanece aqui */}
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-slate-900"></span>
+              </div>
+              <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium flex items-center justify-between flex-1">
+                  Pendências
+                  {/* O badge numérico vermelho permanece aqui */}
+                  <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full ml-2">3</span>
+              </span>
             </button>
-        <button onClick={() => navigate('/relatorios')}className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <BarChart3 size={24} className="min-w-[24px] text-slate-400 group-hover:text-blue-400" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium text-white"> Relatórios</span>
-        </button>
-          
-          <button className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <FileText size={24} className="min-w-[24px]" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Documentos</span>
-          </button>
+            
+            <button onClick={() => navigate('/relatorios')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+                <BarChart3 size={24} className="min-w-[24px]" />
+                <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Relatórios</span>
+            </button>
+              
+            <button className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+              <FileText size={24} className="min-w-[24px]" />
+              <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Documentos</span>
+            </button>
 
-        <button onClick={() => navigate('/configuracoes')}className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
-            <Settings size={24} className="min-w-[24px]" />
-            <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium text-white">Configurações</span>
-        </button>      
-          
+            <button onClick={() => navigate('/configuracoes')} className="flex items-center w-full p-3 rounded-lg hover:bg-slate-800 transition-all whitespace-nowrap">
+                <Settings size={24} className="min-w-[24px]" />
+                <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity font-medium">Configurações</span>
+            </button>      
         </nav>
 
         <button onClick={() => navigate('/')} className="p-6 flex items-center border-t border-slate-800 hover:bg-red-500/10 text-red-400 transition-all">
@@ -80,20 +93,21 @@ const Layout = () => {
         </button>
       </aside>
 
-      {/* Área Principal com Margem para a Sidebar */}
+      {/* Área Principal */}
       <main className="flex-1 flex flex-col overflow-hidden ml-20 w-full">
         
-        <header className="bg-white shadow-sm h-20 px-8 flex justify-between items-center z-10 w-full">
-          <div className="relative w-96">
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-            <input 
-              type="text" 
-              placeholder="Pesquisar..." 
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500/20"
-            />
-          </div>
+        {/* Cabeçalho */}
+<header className="bg-white shadow-sm h-20 px-8 flex justify-end items-center z-10 w-full relative">
           
+          {/* Título Centralizado Exatamente no Meio */}
+          <h1 className="text-slate-800 font-extrabold text-2xl tracking-tight absolute left-1/2 transform -translate-x-1/2">
+            {getTituloPagina()}
+          </h1>
+          
+          {/* Lado Direito: Notificações e Perfil (Mantido igual) */}
           <div className="flex items-center space-x-6">
+            
+            {/* Sino de Notificações */}
             <div className="relative">
               <button 
                 onClick={() => setShowNotifications(!showNotifications)}
@@ -123,9 +137,17 @@ const Layout = () => {
               )}
             </div>
 
-            <div className="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
-              G2
+            {/* Nome e Avatar da Pessoa */}
+            <div className="flex items-center space-x-3 border-l border-gray-100 pl-6">
+              <div className="hidden md:block text-right">
+                <p className="text-sm font-bold text-gray-800 leading-tight">Admin G2</p>
+                <p className="text-xs text-gray-500">Administrador</p>
+              </div>
+              <div className="h-10 w-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                G2
+              </div>
             </div>
+
           </div>
         </header>
 

@@ -10,9 +10,6 @@ const Configuracoes = () => {
       
       {/* Cabeçalho com o botão de Salvar na mesma linha para economizar espaço */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">
-          Configurações do Usuário
-        </h2>
         <button className="flex items-center space-x-2 bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition-all active:scale-95 shadow-sm">
           <Save size={18} />
           <span>Salvar Alterações</span>
