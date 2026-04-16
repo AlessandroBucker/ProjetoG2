@@ -16,7 +16,7 @@ const Leads = () => {
     console.log("Lead capturado:", formData);
     // Aqui no futuro você pode enviar para o Django salvar no banco
     alert("Obrigado! Entraremos em contato em breve.");
-    navigate("/");
+     navigate("/");
   };
 
   return (
