@@ -1,24 +1,34 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./components/Home"; // Nova Importação
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import Leads from "./components/Leads";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Leads from './components/Leads';
+import VisaoGeral from './components/VisaoGeral';
+import Layout from './components/Layout';import Relatorios from './components/Relatorios';
+import NovaAnalise from './components/NovaAnalise';
+import Cadastros from './components/Cadastros';
+import Configuracoes from './components/Configuracoes';
+import Pendencias from './components/Pendencias';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Agora a Home é a primeira página */}
+        {/* Rotas Públicas (Sem o menu lateral) */}
         <Route path="/" element={<Home />} />
         <Route path="/leads" element={<Leads />} />
-
-        {/* Login em rota dedicada */}
         <Route path="/login" element={<Login />} />
+        
+        {/* Rotas Protegidas (Com o menu lateral) */}
+        <Route element={<Layout />}>
+          <Route path="/VisaoGeral" element={<VisaoGeral />} />
+          <Route path="/configuracoes" element={<Configuracoes />} />
+          <Route path="/cadastros" element={<Cadastros />} />
+          <Route path="/relatorios" element={<Relatorios />} />
+          <Route path="/nova-analise" element={<NovaAnalise />} />
+          <Route path="/pendencias" element={<Pendencias />} />
+        </Route>
+        
 
-        {/* Dashboard protegido (pós-login) */}
-        <Route path="/dashboard" element={<Dashboard />} />
-
-        {/* Fallback: se errar a URL, volta pra Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Lock, User, ArrowLeft } from "lucide-react"; // Importamos a seta para a esquerda
+import { Lock, User, ArrowLeft } from "lucide-react"; 
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const Login = () => {
         password,
       });
       console.log("Resposta do servidor:", response.data);
-      navigate('/dashboard');
+      navigate('/VisaoGeral');
     } catch (err) {
       console.error("Erro ao fazer login:", err);
       setError("Não foi possível conectar ou credenciais inválidas.");
@@ -35,8 +35,6 @@ const Login = () => {
     <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-md">
         {/* Botão para voltar à Home antes do card de login */}
-
-
         <form
           onSubmit={handleLogin}
           className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
@@ -44,7 +42,7 @@ const Login = () => {
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">
             Bem-vindo
           </h2>
-          <p className="text-center text-gray-500 mb-8">Introduza os seus dados para aceder</p>
+          <p className="text-center text-gray-500 mb-8">Introduza os seus dados para acessar</p>
 
           {error && (
             <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-xl text-sm border border-red-100">
@@ -67,7 +65,7 @@ const Login = () => {
           </div>
 
           <div className="mb-8">
-            <label className="block text-gray-700 text-sm font-semibold mb-2">Palavra-passe</label>
+            <label className="block text-gray-700 text-sm font-semibold mb-2">Senha</label>
             <div className="relative">
               <Lock className="absolute left-3 top-3 text-gray-400" size={18} />
               <input
