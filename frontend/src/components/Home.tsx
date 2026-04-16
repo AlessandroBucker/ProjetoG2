@@ -22,7 +22,7 @@ const Home = () => {
           onClick={() => navigate("/login")}
           className="bg-slate-900 text-white px-6 py-2 rounded-full font-medium hover:bg-slate-800 transition-all"
         >
-          Acessar Sistemas
+          Acessar Sistema
         </button>
       </nav>
 
@@ -30,7 +30,7 @@ const Home = () => {
       <header className="flex-1 flex flex-col items-center justify-center text-center px-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h1 className="text-4xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
-            Governança Inteligente para
+            Governança Inteligente para vai vercel
             <br />
             <span className="text-blue-600">Escritórios Contábeis</span>
           </h1>
