@@ -22,7 +22,7 @@ const Home = () => {
           onClick={() => navigate("/login")}
           className="bg-slate-900 text-white px-6 py-2 rounded-full font-medium hover:bg-slate-800 transition-all"
         >
-          Acessar Sistema
+          Acessar Sistemas
         </button>
       </nav>
 
