@@ -39,7 +39,7 @@ const Login = () => {
 
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="block text-sm font-bold text-gray-700">Senha de Acesso</label>
+                <label className="block text-sm font-bold text-gray-700">Senha de Acessos</label>
               </div>
               <div className="relative">
                 <Lock className="absolute left-4 top-3.5 text-gray-400" size={18} />
